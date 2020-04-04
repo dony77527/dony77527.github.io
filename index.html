@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>       
+    <style>
+        @import url("https://use.fontawesome.com/releases/v5.12.1/css/all.css");
+        @import url("https://use.fontawesome.com/releases/v5.12.1/css/v4-shims.css");
+        @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap&subset=chinese-traditional");
+        
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        html,body{
+            height: 100%;
+        }
+        body {
+            background-color: #edece1;          
+        }
+        section{
+            padding: 20px;            
+        }
+        .container{
+            width: 1200px;
+            margin: auto;  
+        }
+        .container > h2{
+            font-size: 30px;
+            padding: 10px 0;
+            margin-left: -10px;
+            position: relative;
+        }
+        .container > h2::after{
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            right: 0;
+            height: 20%;
+            width: 90%;
+            border-radius: 0 20px 20px 0;
+            transform: translateY(-100%);
+            background-color: #fff;
+            z-index: -1;
+        }
+        .container .item p{
+            font-size: 18px;
+        }
+/* profile */      
+        .profile .container{
+            display: flex;
+            justify-content: center;
+        }
+        .profile .container .item {
+            width: 400px;
+            box-sizing: border-box;          
+            padding: 10px;
+        }         
+        .profile .pic {
+            border: none;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 220px;
+            height: 250px;
+            margin: auto;           
+        }
+        .profile .info{
+            padding: 10px;
+        }
+        .profile .info p{
+            font-size: 18px;
+            font-weight: 400;
+            padding: 5px;
+            text-align: center;
+        }
+        .profile .pic img{
+            width: 100%;
+            vertical-align: top;
+        }
+        .profile .text{
+            padding-top: 30px;  
+        }
+        .profile .text h1{
+            font-size: 32px;
+            padding-bottom: 20px;        
+        }
+        .profile .text i{
+            padding-right: 12px;
+            color: #000;
+        }
+        .profile .text p{
+            font-size: 18px;
+            padding: 10px;    
+            color: #666        
+        }
+        .profile .text a{
+            text-decoration: none;
+            color: #666 
+        }
+/* experience */
+        .experience .item-list {
+            display: flex;            
+        } 
+        .experience  .pic-list{
+            display: flex;
+            padding: 10px 20px;   
+        }
+        .experience  .pic-list img{
+            width : 40%;
+            margin: 0 5px;
+            transition: all .2s;
+        }
+        .experience  .pic-list img:hover{
+            transform: scale(2);
+            z-index: 2;
+        }
+        .time-line{
+            width: 50%;
+            margin-top: 40px;   
+            padding: 0 20px 0 40px;
+        }
+        .time-line > li{
+            border-left: 2px solid #666;
+            padding-left: 50px;
+            position: relative;    
+        }
+        .time-line > li::before{
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #999;
+            position: absolute;
+            top:0;
+            left: 0;
+            transform: translateX(-10px);
+        } 
+        .time-line .text{
+            padding: 30px 20px;
+        }
+        .time-line .text h3{
+            font-size: 24px;
+            padding-bottom: 10px;
+        }
+        .time-line .text p{
+            font-size: 18px;
+        }
+        .time-line .text li {
+            padding: 5px 10px;
+        }
+        .time-line .pic {
+            position: absolute;
+            width: 150px;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);            
+        }    
+        .time-line .pic img{
+            width: 100%;
+        }
+        .time-line .start-year{
+            position: absolute;
+            width: 50px;
+            line-height: 20px;
+            background-color: #87CEFA;
+            padding: 5px;
+            left: 0;
+            bottom: 0;
+            transform: translateX(-62px);
+        }
+        .time-line .start-year::before{
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 15px solid #edece1;
+            border-left: 10px solid #87CEFA;
+            border-bottom: 15px solid #edece1;
+            top: 0;
+            right : 0;
+            bottom: 0;
+        }
+/* skill */
+        .skill .item-list{
+            display: flex;
+        }
+        .skill .item-list .item {
+            width: 400px;
+            padding: 20px;
+        }
+        .skill .item-list .item h3{
+            font-size: 24px;
+            position: relative;
+            line-height: 50px;
+        }
+        .skill .item-list .item h3::before{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 40px;
+            left: -10px;
+            top: 5px;
+            height: 50%;
+            background-color: #00BFFF;
+            z-index: -1;
+        }
+        .skill .item-list .item h3::after{
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 30%;
+            bottom : 0px;
+            height: 1px;
+            background-color: #000;
+        }
+        .skill .item-list p{
+            padding: 10px;
+        }
+/* project */       
+        .project .item {
+            font-size: 0px;
+            position: relative;    
+            box-shadow: 8px 5px 2px #bbb;
+            margin: 30px 0;   
+            transform: scale(1);   
+            transition: transform .1s;       
+            background-color: #fff;   
+        }
+        .project .item:hover{
+            transform: scale(1.4);  
+            transition: transform .3s;
+            z-index: 3;
+        }        
+        .project .item:hover .tech-info{
+            opacity: 1;
+        }
+        .project .item:hover .text-info h3::after{
+            right: 30%;
+        }
+        .project .text-info{
+            display: inline-block;
+            width: 30%;
+            padding: 10px;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+        .project .text-info h3 {
+            font-size: 24px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .project .text-info h3::after{
+            content: '';
+            display: block;
+            height: 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 100%;
+            background-color: #fa1;
+            transition: right .5s;
+        }
+        .project .text-info p {
+            font-size: 18px;
+            padding: 10px;
+        }       
+        .project .text-info strong {
+            display: block;
+        } 
+        .tech-info{
+            position: absolute;           
+            left: 10px;
+            bottom: 10px;
+            opacity: 0;
+            transition: all .3s;
+        }     
+        .tech-info span {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #98F898;
+            color: #333;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .tech-info span:hover{
+            background-color: 	#32CD32;
+            color: #fff;
+        }
+        .project .pic-info{
+            display: inline-block;
+            width: 70%;
+        }
+        .pic-info .pic-list{
+            display: flex;        
+        }
+        .pic-info .pic-list img{
+            width: 50%;
+            min-height: 300px;
+            min-height: 320px;
+            padding: 1px;
+        }
+       
+       .return-top{
+           position: fixed;
+           bottom: 30px;
+           right: 30px;
+           width: 60px;
+           padding : 10px;
+           font-size: 50px;
+           line-height: 60px;
+           text-align: center;
+       }
+       .return-top .fa-arrow-circle-up{
+           color: #999;
+       }
+        
+    </style>
+</head>
+<body>
+    <section class="profile">
+        <div class="container">
+            <div class="item">
+                <div class="pic">
+                    <img src="./image/my-1.jpg" alt="">
+                </div>
+                <div class="info">
+                    <p>個性隨和的程式設計師</p>
+                    <p>積極態度面對事物，用思考代替發問</p>
+                </div>             
+            </div>
+            <div class="item">
+                <div class="text">
+                    <h1>張家豪 | Edward Chang</h1>                   
+                    <p><i class="fas fa-briefcase"></i> 光寶科技 - 網頁工程師</p>
+                    <p><i class="fas fa-graduation-cap"></i>第一科技大學 - 電腦與通訊工程所, 碩士</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:dony77527@gmail.com">dony77527@gmail.com</a></p>
+                    <!-- <p><i class="fas fa-phone-alt"></i> 0932-461-636</p> -->
+                </div>   
+            </div>  
+        </div>
+    </section>
+    <section class="experience">
+        <div class="container">                 
+            <h2>學經歷</h2>
+            <div class="item-list">
+                <ul class="time-line"> 
+                    <li>
+                        <div class="text">
+                            <h3>資策會 - 程式設計師培訓班</h3>                      
+                        </div>         
+                        <p class="start-year">2014</p>             
+                    </li>
+                    <li>
+                        <div class="text">
+                            <h3>第一科大 - 電腦與通訊工程所</h3>                        
+                        </div>     
+                        <p class="start-year">2010</p>                 
+                    </li>
+                    <li>
+                        <div class="text">
+                            <h3>樹德科大 - 資訊工程系</h3>                        
+                        </div>          
+                        <div class="pic-list">
+                            <img src="./image/p1.jpg" alt="">
+                            <img src="./image/p2.jpg" alt="">
+                        </div>
+                        <p class="start-year">2006</p>            
+                    </li>
+                    <li></li>            
+                </ul>
+                <ul class="time-line">                                 
+                    <li>
+                        <div class="text">
+                            <h3>光寶科技</h3>
+                            <ul>
+                                <li><p>1. 專案預算管理平台</p></li>
+                                <li><p>2. 報價流程管理平台</p></li>
+                                <li><p>3. 專案管理平台</p></li>
+                                <li><p>4. 設變管理平台</p></li>
+                                <li><p>5. 試產管理平台</p></li>
+                                <li><p>6. 年度預算編列平台</p></li>
+                            </ul>                           
+                        </div>   
+                        <div class="pic">
+                            <img src="./image/Liteon.png" alt="">
+                        </div>     
+                        <p class="start-year">2017</p>            
+                    </li>
+                    <li>
+                        <div class="text">
+                            <h3>凌誠科技</h3>
+                            <ul>
+                                <li><p>1. 放款管理平台</p></li>
+                                <li><p>2. 次世代鋼產學大聯盟(NGS)</p></li>
+                                <li><p>3. 研發業務管理平台</p></li>
+                                <li><p>4. 教師學術期刊管理平台</p></li>
+                                <li><p>5. 技術證照管理平台</p></li>
+                                <li><p>6. 畢業生管理平台</p></li>
+                                <li><p>7. 專利維護平台</p></li>
+                            </ul>                           
+                        </div>     
+                        <div class="pic">
+                            <img src="./image/LinkChain.png" alt="">
+                        </div>     
+                        <p class="start-year">2014</p>                 
+                    </li>
+                    <li></li>            
+                </ul>
+            </div>
+           
+        </div>
+    </section>    
+    <section class="skill">
+        <div class="container">
+            <h2>技能</h2>            
+            <div class="item-list">
+                <div class="item">
+                    <h3>前端</h3>
+                    <p>HTML</p>
+                    <p>JavaScript</p>
+                    <p>CSS</p>
+                    <p>JQuery</p>
+                    <p>Bootstrap</p>
+                </div>
+                <div class="item">
+                    <h3>後端</h3>
+                    <p>.Net MVC</p>
+                    <p>LINQ</p>
+                    <p>Entity Framework</p>
+                    <p>MS SQL</p>
+                </div>    
+                <div class="item">
+                    <h3>語言</h3>
+                    <p>中文</p>
+                    <p>英文</p>
+                </div>      
+            </div>                 
+        </div>
+    </section>
+    <section class="project">
+        <div class="container">
+            <h2>專案經歷</h2>
+            <div class="item">
+                <div class="text-info">
+                    <h3>專案預算管理</h3>
+                    <p><strong>簡介:</strong>專案經理藉平台填寫與客戶所談之交付項目與收付款項，並匯出表單做簽核。與會計帳目連結，了解專案目前應收帳款及預算花費。</p>
+                    <p><strong>負責:</strong>分析、設計、開發、維護。</p>
+                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/IO-1.png" alt="">
+                        <img src="./image/IO-2.png" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>JavaScript</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="text-info">
+                    <h3>報價進度管理</h3>
+                    <p><strong>簡介:</strong>業務藉平台填寫報價相關資訊並展開流程，於平台控管流程進度及彙整報價相關人員回報資料。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/RFQ-1.png" alt="">
+                        <img src="./image/RFQ-2.png" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>JavaScript</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="text-info">
+                    <h3>專案管理</h3>
+                    <p><strong>簡介:</strong>專案經理藉平台紀錄專案鑲鑽訓與各階段時程，分析人力資源。</p>
+                    <p><strong>負責:</strong>分析、設計、開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/PJ-1.png" alt="">
+                        <img src="./image/PJ-2.png" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>JavaScript</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="text-info">
+                    <h3>設變管理</h3>
+                    <p><strong>簡介:</strong>團隊成員藉平台控管設計變更資訊傳遞及流程，評估設計變更所需成本。</p>
+                    <p><strong>負責:</strong>分析、設計、開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/DC-1.png" alt="">
+                        <img src="./image/DC-3.png" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>JavaScript</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="text-info">
+                    <h3>放款管理</h3>
+                    <p><strong>簡介:</strong>農會人員藉由系統紀錄借款人授、徵信相關資訊，便於放款及審核人員做相關資訊審查，後續也利於催收人員查詢相關資訊及催收紀錄。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/Fund-1.jpg" alt="">
+                        <img src="./image/Fund-2.png" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="text-info">
+                    <h3>次世代鋼產學大聯盟</h3>
+                    <p><strong>簡介:</strong>與中鋼有合作計畫之院校研究人員藉由系統建置研究計畫，並提交研究紀錄予中鋼人員簽核及評論。提供儀表板功能以燈號表達繳交狀態，以利審查計畫狀況。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/NGS-1.jpg" alt="">
+                        <img src="./image/NGS-2.jpg" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="text-info">
+                    <h3>研發業務管理</h3>
+                    <p><strong>簡介:</strong>研究負責人藉由系統建置研究計畫，並指派工作予研究人員。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/RD-1.jpg" alt="">
+                        <img src="./image/RD-2.jpg" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="text-info">
+                    <h3>技術證照管理</h3>
+                    <p><strong>簡介:</strong>學生藉由平台登入考取證照，系所透過系統進行統計及評核領取獎勵。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/Lic-1.jpg" alt="">
+                        <img src="./image/Lic-2.jpg" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="text-info">
+                    <h3>專利管理</h3>
+                    <p><strong>簡介:</strong>教師藉由平台紀錄專利相關資訊，提供學校統計管理。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/patent-1.jpg" alt="">
+                        <img src="./image/patent-2.jpg" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="text-info">
+                    <h3>教師學術期刊</h3>
+                    <p><strong>簡介:</strong>教師藉由平台紀錄論文、期刊等相關資訊，提供學校統計管理及獎勵。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/teacher-1.jpg" alt="">
+                        <img src="./image/teacher-2.jpg" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="text-info">
+                    <h3>畢業生管理</h3>
+                    <p><strong>簡介:</strong>追蹤並統計學生畢業後就學、就業情形。</p>
+                    <p><strong>負責:</strong>開發、維護。</p>                    
+                </div>
+                <div class="pic-info">
+                    <div class="pic-list">
+                        <img src="./image/student-1.jpg" alt="">
+                        <img src="./image/student-2.jpg" alt="">
+                    </div>                   
+                </div>
+                <div class="tech-info">
+                    <p><span>.Net MVC</span><span>Entity Framework</span><span>LINQ</span><span>JQuery</span><span>Ajax</span><span>CSS</span></p>
+                </div>
+            </div>
+        </div>        
+    </section>
+    <div class="return-top"><a href="#"><i class="fas fa-arrow-circle-up"></i></a></div>
+  
+</body>
+</html>
